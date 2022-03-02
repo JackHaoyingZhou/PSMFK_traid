@@ -53,7 +53,7 @@ class TraidPSMFK():
         else:
             omega_skew = self.__skew(omega)
             R = self.__axisanlge2rot(omega,theta)
-            p = np.dot((np.eye(3)*theta + (1-np.cos(theta))*omega_skew + (theta-np.sin(theta))*omega_skew*omega_skew),v)
+            p = np.dot((np.eye(3)*theta + (1-np.cos(theta))*omega_skew + (theta-np.sin(theta))*np.dot(omega_skew,omega_skew)),v)
         T[0:3, 0:3] = R
         T[0:3, 3] = p
         return T
